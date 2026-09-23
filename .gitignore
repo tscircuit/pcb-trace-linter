@@ -1,0 +1,8 @@
+node_modules/
+cosmos-export/
+cosmos.imports.ts
+bun.lock
+bun.lockb
+.cursor/
+.DS_Store
+*.diff.png

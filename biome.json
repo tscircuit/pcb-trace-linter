@@ -1,0 +1,13 @@
+{
+  "formatter": { "indentStyle": "space" },
+  "javascript": { "formatter": { "semicolons": "asNeeded" } },
+  "files": {
+    "includes": [
+      "**",
+      "!**/cosmos-export",
+      "!**/tests/fixtures/*.json",
+      "!**/tests/__snapshots__",
+      "!**/cosmos.imports.ts"
+    ]
+  }
+}
