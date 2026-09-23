@@ -4,7 +4,8 @@
   "type": "module",
   "module": "lib/index.ts",
   "exports": {
-    ".": "./lib/index.ts"
+    ".": "./lib/index.ts",
+    "./srj": "./lib/srj.ts"
   },
   "files": [
     "lib"
@@ -37,7 +38,8 @@
     "earcut": "^3.2.3",
     "graphics-debug": "0.0.99",
     "minicssgrid": "^0.0.9",
-    "spicey": "^0.0.14"
+    "spicey": "^0.0.14",
+    "debug": "^4.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",

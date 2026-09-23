@@ -60,3 +60,5 @@ BUN_UPDATE_SNAPSHOTS=1 bun test -u
 See [fixture provenance](tests/fixtures/README.md) for pinned sources. Visual snapshots include a full-board overview and a labeled detail for every issue. Detail drawings preserve segment direction but normalize display size; endpoint labels retain real coordinates.
 
 Bootstrapped according to the [tscircuit handbook](https://github.com/tscircuit/handbook/blob/main/guides/bootstrapping-repos.md), using source installation (`module: lib/index.ts`), no lockfile, Biome, Bun checks, and Cosmos. Repository provisioned through [tscircuit/create-repo#76](https://github.com/tscircuit/create-repo/pull/76).
+
+SRJ consumers such as the autorouter can import `PcbTraceLinter` and `validateSimpleRouteJson` from `@tscircuit/pcb-trace-linter/srj`. This entry does not load core's Circuit JSON renderer or a React runtime, so it also works in React 18 applications. Use the main entry for Circuit JSON conversion.

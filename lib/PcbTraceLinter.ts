@@ -4,7 +4,7 @@ import {
   definePipelineStep,
   type PipelineStep,
 } from "@tscircuit/solver-utils"
-import { normalizeInput } from "./normalizeInput"
+import { validateSimpleRouteJson } from "./validateSimpleRouteJson"
 import { OddAngleFinder } from "./OddAngleFinder"
 import type {
   LinterInput,
@@ -39,7 +39,7 @@ export class PcbTraceLinter extends BasePipelineSolver<PcbTraceLinterParams> {
   ]
   constructor(params: PcbTraceLinterParams) {
     super(params)
-    this.srj = normalizeInput(params.input)
+    this.srj = validateSimpleRouteJson(params.input)
     this.MAX_ITERATIONS = (this.srj.traces ?? []).reduce(
       (n, t) => n + t.route.length,
       10,
