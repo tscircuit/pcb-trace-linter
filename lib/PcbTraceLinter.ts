@@ -1,5 +1,6 @@
 import {
   BasePipelineSolver,
+  type BaseSolver,
   definePipelineStep,
   type PipelineStep,
 } from "@tscircuit/solver-utils"
@@ -13,13 +14,17 @@ import type {
 } from "./types"
 import { visualizeIssues } from "./visualizeIssues"
 
+export interface IssueIdentifier extends BaseSolver {
+  getOutput(): TraceIssue[]
+}
+
 export interface PcbTraceLinterParams extends LinterOptions {
   input: LinterInput
 }
 export class PcbTraceLinter extends BasePipelineSolver<PcbTraceLinterParams> {
   srj: SimpleRouteJson
   oddAngleFinder?: OddAngleFinder
-  pipelineDef: PipelineStep<OddAngleFinder>[] = [
+  pipelineDef: PipelineStep<IssueIdentifier>[] = [
     definePipelineStep(
       "oddAngleFinder",
       OddAngleFinder,
@@ -44,7 +49,7 @@ export class PcbTraceLinter extends BasePipelineSolver<PcbTraceLinterParams> {
   override getOutput(): TraceIssue[] {
     return this.pipelineDef.flatMap(
       (stage) =>
-        this.getSolver<OddAngleFinder>(stage.solverName)?.getOutput() ?? [],
+        this.getSolver<IssueIdentifier>(stage.solverName)?.getOutput() ?? [],
     )
   }
   override getConstructorParams(): [PcbTraceLinterParams] {
